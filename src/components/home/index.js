@@ -4,13 +4,15 @@ import Header from "../header";
 import Keyboard from "../keyboard";
 import WordsList from "../words";
 
+import { Container } from "@mui/material";
+
 const Home = () => {
   return (
-    <div>
+    <Container>
       <Header />
       <WordsList />
       <Keyboard />
-    </div>
+    </Container>
   );
 };
 
