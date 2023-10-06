@@ -1,8 +1,10 @@
 import React, { useState, useContext, createContext } from "react";
+import useInput from "../hooks/useInput";
+
 const context = createContext();
 
 const WordsContext = ({ children }) => {
-  const initial = [
+    const initial = [
     ["h", "e", "l", "l", "o"],
     ["t", "h", "e"],
     ["p"],
@@ -11,6 +13,7 @@ const WordsContext = ({ children }) => {
     [],
   ];
   const [words, setWords] = useState(initial);
+    const input = useInput();
 
   const updateWord = (index, word) => {
     setWords((words) => ({ ...words, [index]: word }));
