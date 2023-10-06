@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
-const CharBox = ({ char = "X" }) => {
+const CharBox = ({ char }) => {
   return (
     <Box
       sx={{
@@ -17,7 +17,7 @@ const CharBox = ({ char = "X" }) => {
         borderRadius: '4px'
       }}
     >
-      <Typography>{char}</Typography>
+      <Typography sx={{fontWeight: '600'}} variant="h4">{char || ''}</Typography>
     </Box>
   );
 };

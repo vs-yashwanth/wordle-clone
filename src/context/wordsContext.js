@@ -2,18 +2,17 @@ import React, { useState, useContext, createContext } from "react";
 const context = createContext();
 
 const WordsContext = ({ children }) => {
-  const initial = {
-    0: ['initial'],
-    1: [],
-    2: [],
-    3: [],
-    4: [],
-    5: [],
-  };
+  const initial = [
+    ["h", "e", "l", "l", "o"],
+    ["t", "h", "e"],
+    ["p"],
+    [],
+    [],
+    [],
+  ];
   const [words, setWords] = useState(initial);
 
-    const updateWord = (index, word) => {
-      console.log('updating')
+  const updateWord = (index, word) => {
     setWords((words) => ({ ...words, [index]: word }));
   };
 
@@ -29,5 +28,5 @@ const useWordsContext = () => {
   return wordsContext;
 };
 
-export default WordsContext;
-export { useWordsContext };
+export default useWordsContext;
+export { WordsContext };
