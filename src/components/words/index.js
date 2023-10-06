@@ -1,16 +1,17 @@
-import React from 'react'
+import { Stack } from "@mui/system";
+import React from "react";
+import Word from "./word";
 
 const WordsList = () => {
   return (
-    <div>
-        <div>Word</div>
-        <div>Word</div>
-        <div>Word</div>
-        <div>Word</div>
-        <div>Word</div>
-        <div>Word</div>
-    </div>
-  )
-}
+    <Stack direction="column" spacing={0.8}>
+      <Word />
+      <Word />
+      <Word />
+      <Word />
+      <Word />
+    </Stack>
+  );
+};
 
-export default WordsList
+export default WordsList;

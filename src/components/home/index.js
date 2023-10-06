@@ -4,14 +4,16 @@ import Header from "../header";
 import Keyboard from "../keyboard";
 import WordsList from "../words";
 
-import { Container } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 
 const Home = () => {
   return (
-    <Container>
-      <Header />
-      <WordsList />
-      <Keyboard />
+    <Container sx={{bgcolor: 'gray'}}>
+      <Stack direction='column' spacing={5} justifyContent='center' alignItems='center'> 
+        <Header />
+        <WordsList />
+        <Keyboard />
+      </Stack>
     </Container>
   );
 };
