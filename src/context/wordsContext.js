@@ -2,11 +2,13 @@ import React, { useState, useContext, createContext, useEffect } from "react";
 import constants from "../constants";
 import useInput from "../hooks/useInput";
 import useReduceInput from "../hooks/useReduceInput";
+import useValidateInput from "../hooks/useValidateInput";
+import useWords from "../hooks/useWords";
 
 const context = createContext();
 
 const WordsContext = ({ children }) => {
-  const initial = {
+  const initialWords = {
     0: [],
     1: [],
     2: [],
@@ -15,7 +17,19 @@ const WordsContext = ({ children }) => {
     5: [],
   };
 
-  const [words, setWords] = useState(initial);
+  const initialValidation = {
+    0: [null, null, null, null, null],
+    1: [null, null, null, null, null],
+    2: [null, null, null, null, null],
+    3: [null, null, null, null, null],
+    4: [null, null, null, null, null],
+    5: [null, null, null, null, null],
+  };
+
+  const targetWord = useWords();
+  const [words, setWords] = useState(initialWords);
+  const [validation, setValidation] = useState(initialValidation);
+  const [gameState, setGameState] = useState(null);
   const [currentRow, setCurrentRow] = useState(0);
   const input = useInput();
   const reduceInput = useReduceInput(
@@ -24,10 +38,19 @@ const WordsContext = ({ children }) => {
     currentRow,
     setCurrentRow
   );
+  const validateInput = useValidateInput(
+    words,
+    validation,
+    setValidation,
+    targetWord,
+    setGameState
+  );
 
   const resetWords = () => {
-    setWords((words) => initial);
+    setWords((words) => initialWords);
     setCurrentRow((currentRow) => 0);
+    setValidation((vals) => initialValidation);
+    setGameState((g) => null);
   };
 
   useEffect(() => {
@@ -35,13 +58,31 @@ const WordsContext = ({ children }) => {
   }, [input]);
 
   useEffect(() => {
-    if (currentRow === constants.wordsNumber) {
-      alert("Game Over!");
-      resetWords();
+    if (
+      currentRow - 1 >= 0 &&
+      currentRow - 1 < constants.wordsNumber &&
+      words[currentRow - 1].length === constants.wordLength
+    ) {
+      validateInput(currentRow - 1);
     }
   }, [currentRow]);
 
-  return <context.Provider value={{ words, currentRow }}>{children}</context.Provider>;
+  useEffect(() => {
+    if (gameState) {
+      alert(
+        gameState === "success"
+          ? "You Won!"
+          : `You lost, the word is ${targetWord}`
+      );
+      resetWords();
+    }
+  }, [gameState]);
+
+  return (
+    <context.Provider value={{ words, currentRow, targetWord, validation }}>
+      {children}
+    </context.Provider>
+  );
 };
 
 const useWordsContext = () => {

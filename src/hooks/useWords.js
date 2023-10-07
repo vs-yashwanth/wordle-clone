@@ -1,7 +1,9 @@
-
 const useWords = () => {
+  const getWord = () => {
+    return "calif".toUpperCase();
+  };
 
-    return ['power']
-}
+  return getWord();
+};
 
-export default useWords
+export default useWords;
