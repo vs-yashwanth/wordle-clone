@@ -41,7 +41,7 @@ const WordsContext = ({ children }) => {
     }
   }, [currentRow]);
 
-  return <context.Provider value={{ words }}>{children}</context.Provider>;
+  return <context.Provider value={{ words, currentRow }}>{children}</context.Provider>;
 };
 
 const useWordsContext = () => {

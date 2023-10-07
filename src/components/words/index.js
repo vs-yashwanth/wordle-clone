@@ -6,12 +6,14 @@ import useWordsContext from "../../context/wordsContext";
 import useOptionsContext from "../../context/optionsContext";
 
 const WordsList = () => {
-  const { words, updateWord } = useWordsContext();
+  const { words, currentRow } = useWordsContext();
   const { options } = useOptionsContext();
 
   const wordsArray = [];
   for (let i = 0; i < options.wordsNumber; i++) {
-    wordsArray.push(<Word key={i} word={words[i]} />);
+    wordsArray.push(
+      <Word key={i} word={words[i]} selected={currentRow === i} />
+    );
   }
 
   return (
