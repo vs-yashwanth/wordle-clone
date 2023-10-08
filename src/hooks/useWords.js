@@ -10,6 +10,7 @@ const useWords = () => {
     const words = wordsJSON.data;
     const randomInd = getRandomNumber(0, words.length);
     setWord(words[randomInd]);
+    //console.log(words[randomInd]);
   }, [dep]);
 
   const getNewWord = () => {

@@ -29,6 +29,7 @@ const WordsContext = ({ children }) => {
   const { targetWord, getNewWord } = useWords();
   const [words, setWords] = useState(initialWords);
   const [validation, setValidation] = useState(initialValidation);
+  const [keyValidations, setKeyValidations] = useState({});
   const [gameState, setGameState] = useState(null);
   const [currentRow, setCurrentRow] = useState(0);
   const input = useInput();
@@ -44,7 +45,8 @@ const WordsContext = ({ children }) => {
     setValidation,
     targetWord,
     setGameState,
-    setCurrentRow
+    setCurrentRow,
+    setKeyValidations
   );
 
   const resetWords = () => {
@@ -52,6 +54,7 @@ const WordsContext = ({ children }) => {
     setCurrentRow((currentRow) => 0);
     setValidation((vals) => initialValidation);
     setGameState((g) => null);
+    setKeyValidations((vals) => ({}));
     getNewWord();
   };
 
@@ -81,7 +84,9 @@ const WordsContext = ({ children }) => {
   }, [gameState]);
 
   return (
-    <context.Provider value={{ words, currentRow, targetWord, validation }}>
+    <context.Provider
+      value={{ words, currentRow, targetWord, validation, keyValidations }}
+    >
       {children}
     </context.Provider>
   );

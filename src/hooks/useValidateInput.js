@@ -9,7 +9,8 @@ const useValidateInput = (
   setValidation,
   targetWord,
   setGameState,
-  setCurrentRow
+  setCurrentRow,
+  setKeyValidations
 ) => {
   const isValidWord = useValidWords();
 
@@ -29,6 +30,10 @@ const useValidateInput = (
       if (word[i] === targetWord[i]) {
         new_val[i] = "g";
         targetWordSet[word[i]]--;
+        setKeyValidations((vals) => ({
+          ...vals,
+          [word[i]]: getKeyValidation(vals, word[i], "g"),
+        }));
       }
     }
 
@@ -37,7 +42,17 @@ const useValidateInput = (
       if (word[i] in targetWordSet && targetWordSet[word[i]] > 0) {
         targetWordSet[word[i]]--;
         new_val[i] = "y";
-      } else new_val[i] = "r";
+        setKeyValidations((vals) => ({
+          ...vals,
+          [word[i]]: getKeyValidation(vals, word[i], "y"),
+        }));
+      } else {
+        new_val[i] = "r";
+        setKeyValidations((vals) => ({
+          ...vals,
+          [word[i]]: getKeyValidation(vals, word[i], "r"),
+        }));
+      }
     }
 
     if (!new_val.includes("y") && !new_val.includes("r"))
@@ -52,6 +67,13 @@ const useValidateInput = (
   };
 
   return validateInput;
+};
+
+const getKeyValidation = (keyVals, ind, potential) => {
+  if (keyVals[ind] === "g" || (keyVals[ind] === "y" && potential === "g"))
+    return "g";
+  else if (keyVals[ind] === 'y' && potential === 'r') return 'y'
+  else return potential;
 };
 
 export default useValidateInput;
