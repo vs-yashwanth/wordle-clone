@@ -25,16 +25,16 @@ const CharBox = ({ char, selected, color }) => {
   return (
     <Box
       sx={{
-        width: "40px",
-        height: "40px",
+        width: "45px",
+        height: "45px",
         padding: "5px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         margin: "2px",
         border: char
-          ? "1.5px solid black"
-          : `1px solid ${colors.tileBorderGeneral}`,
+          ? `1.5px solid ${colors.tileBorderEntered}`
+          : `1px solid ${colors.tileBorderEmpty}`,
         borderRadius: "4px",
         bgcolor: bgColor,
       }}

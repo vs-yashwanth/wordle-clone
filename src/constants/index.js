@@ -5,11 +5,16 @@ const constants = {
 
 const colors = {
   tileGreen: "#099409",
-  tileYellow: "#c4c402",
-  tileWrong: "#372929",
+  tileYellow: "#cdcd27",
+  tileWrong: "#655c5c",
   textWhite: "white",
   textBlack: "black",
-  tileBorderGeneral: "#2b2b2a",
+  tileBorderEmpty: "#d3d6da",
+  tileBorderEntered: "#3f3838",
+  keyUnused: "#d3d6da",
+  keyWrong: "#655c5c",
+  keyGreen: "#099409",
+  keyYellow: "#cdcd27",
 };
 
 export default constants;

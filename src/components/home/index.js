@@ -11,12 +11,12 @@ import { Container, Stack } from "@mui/material";
 
 const Home = () => {
   return (
-    <Container sx={{ bgcolor: "gray" }}>
+    <Container>
       <OptionsContext>
         <WordsContext>
           <Stack
             direction="column"
-            spacing={5}
+            spacing={4}
             justifyContent="center"
             alignItems="center"
           >
