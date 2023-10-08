@@ -26,7 +26,7 @@ const WordsContext = ({ children }) => {
     5: [null, null, null, null, null],
   };
 
-  const targetWord = useWords();
+  const { targetWord, getNewWord } = useWords();
   const [words, setWords] = useState(initialWords);
   const [validation, setValidation] = useState(initialValidation);
   const [gameState, setGameState] = useState(null);
@@ -43,7 +43,8 @@ const WordsContext = ({ children }) => {
     validation,
     setValidation,
     targetWord,
-    setGameState
+    setGameState,
+    setCurrentRow
   );
 
   const resetWords = () => {
@@ -51,6 +52,7 @@ const WordsContext = ({ children }) => {
     setCurrentRow((currentRow) => 0);
     setValidation((vals) => initialValidation);
     setGameState((g) => null);
+    getNewWord();
   };
 
   useEffect(() => {
