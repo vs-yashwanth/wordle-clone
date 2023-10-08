@@ -20,7 +20,7 @@ const useInput = () => {
       }
     };
 
-    const listener = document.addEventListener("keydown", handleKeyDown);
+    const listener = document.addEventListener("keyup", handleKeyDown);
 
     return () => {
       document.removeEventListener(listener, handleKeyDown);
