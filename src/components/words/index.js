@@ -1,5 +1,5 @@
 import { Stack } from "@mui/system";
-import React, { useEffect } from "react";
+import React from "react";
 import Word from "./word";
 
 import useWordsContext from "../../context/wordsContext";

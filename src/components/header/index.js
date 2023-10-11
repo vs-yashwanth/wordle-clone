@@ -6,7 +6,7 @@ import { Stack } from "@mui/material";
 const Header = () => {
   return (
     <Stack direction="row" justifyContent="center" alignItems="center">
-      <Typography sx={{ fontWeight: 700 }} variant="h4">
+      <Typography sx={{ fontWeight: 700 }} variant="h3">
         Wordle
       </Typography>
     </Stack>

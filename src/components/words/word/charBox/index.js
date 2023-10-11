@@ -1,45 +1,46 @@
 import { Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import React from "react";
-import { colors } from "../../../../constants";
 
 const CharBox = ({ char, selected, color }) => {
+  const theme = useTheme();
+  console.log(theme);
   let bgColor;
   switch (color) {
     case "g":
-      bgColor = colors.tileGreen;
+      bgColor = "success.main";
       break;
     case "y":
-      bgColor = colors.tileYellow;
+      bgColor = "warning.main";
       break;
     case "r":
-      bgColor = colors.tileWrong;
+      bgColor = "error.main";
       break;
     default:
       bgColor = "transparent";
   }
 
   let textColor;
-  if (color) textColor = colors.textWhite;
-  else if (selected) textColor = colors.textBlack;
+  if (color) textColor = theme.palette.text.secondary;
+  else if (selected) textColor = theme.palette.text.primary;
   return (
     <Box
       sx={{
-        width: "45px",
-        height: "45px",
+        width: "50px",
+        height: "50px",
         padding: "5px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        margin: "2px",
         border: char
-          ? `1.5px solid ${colors.tileBorderEntered}`
-          : `1px solid ${colors.tileBorderEmpty}`,
+          ? `1.5px solid ${theme.palette.border.full}`
+          : `1px solid ${theme.palette.border.main}`,
         borderRadius: "4px",
         bgcolor: bgColor,
       }}
     >
-      <Typography sx={{ fontWeight: "600", color: textColor }} variant="h4">
+      <Typography sx={{ fontWeight: "600" }} color={textColor} variant="h4">
         {char || ""}
       </Typography>
     </Box>
