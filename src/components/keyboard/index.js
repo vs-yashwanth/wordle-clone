@@ -3,9 +3,11 @@ import { Grid, Box, Typography } from "@mui/material";
 import { colors } from "../../constants";
 import BackSvg from "../../assets/backSvg";
 import useWordsContext from "../../context/wordsContext";
+import { useTheme } from "@mui/material/styles";
 
 const Keyboard = () => {
   const { keyValidations } = useWordsContext();
+  const theme = useTheme()
   const keyList = "QWERTYUIOPASDFGHJKLeZXCVBNMb";
   const keys = [];
   const handleClick = (key) => {
@@ -28,19 +30,21 @@ const Keyboard = () => {
     let bgColor = colors.keyUnused;
     switch (keyValidations[key]) {
       case "g":
-        bgColor = colors.tileGreen;
+        bgColor = theme.palette.success.main;
         break;
       case "y":
-        bgColor = colors.tileYellow;
+        bgColor = theme.palette.warning.main;
         break;
       case "r":
-        bgColor = colors.tileWrong;
+        bgColor = theme.palette.error.main;
         break;
       default:
-        bgColor = colors.keyUnused;
+        bgColor = theme.palette.key.main;
     }
     const textColor =
-      bgColor === colors.keyUnused ? colors.textBlack : colors.textWhite;
+      bgColor === theme.palette.border.main
+        ? theme.palette.text.primary
+        : theme.palette.text.secondary;
     let out;
     let spacing;
     let variant;

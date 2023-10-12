@@ -27,6 +27,10 @@ const getTheme = (prefersDarkMode) => {
         main: "#d3d6da",
         full: "#3f3838",
       },
+      key: {
+        main: "#d3d6da",
+        error: "#655c5c",
+      },
     },
   });
 
@@ -44,7 +48,7 @@ const getTheme = (prefersDarkMode) => {
         contrastText: "#fff",
       },
       error: {
-        main: "#655c5c",
+        main: "#201E1E",
         light: "#655c5c",
         contrastText: "#fff",
       },
@@ -53,8 +57,12 @@ const getTheme = (prefersDarkMode) => {
         secondary: "#fff",
       },
       border: {
-        full: "#d3d6da",
         main: "#3f3838",
+        full: "#d3d6da",
+      },
+      key: {
+        main: "#655c5c",
+        error: "#201E1E",
       },
     },
   });

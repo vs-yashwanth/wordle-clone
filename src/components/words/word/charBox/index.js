@@ -5,7 +5,6 @@ import React from "react";
 
 const CharBox = ({ char, selected, color }) => {
   const theme = useTheme();
-  console.log(theme);
   let bgColor;
   switch (color) {
     case "g":
