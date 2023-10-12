@@ -10,7 +10,7 @@ const App = () => {
   return (
     <ThemeProvider theme={getTheme(prefersDarkMode)}>
       <CssBaseline enableColorScheme />
-      <Home />
+      <Home style={{ userSelect: "none" }} />
     </ThemeProvider>
   );
 };

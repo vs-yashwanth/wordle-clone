@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid, Box, Typography } from "@mui/material";
 import { colors } from "../../constants";
 import BackSvg from "../../assets/backSvg";
@@ -71,6 +71,7 @@ const Keyboard = () => {
             borderRadius: "4px",
             margin: 0,
           }}
+          style={{userSelect: 'none'}}
           justifyContent="center"
           alignItems="center"
           onClick={() => handleClick(key)}
