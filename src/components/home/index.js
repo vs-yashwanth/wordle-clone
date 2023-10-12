@@ -16,7 +16,7 @@ const Home = () => {
         <WordsContext>
           <Stack
             direction="column"
-            spacing={4}
+            spacing={7}
             justifyContent="center"
             alignItems="center"
           >

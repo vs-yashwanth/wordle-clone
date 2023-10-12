@@ -3,7 +3,6 @@ import React from "react";
 import CharBox from "./charBox";
 
 import useOptionsContext from "../../../context/optionsContext";
-import useWordsContext from "../../../context/wordsContext";
 
 const Word = ({ word, selected, validation }) => {
   const { options } = useOptionsContext();
